@@ -3,9 +3,6 @@ package mwfuryapp.whatsappclone;
 import android.app.Application;
 
 import com.parse.Parse;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.SaveCallback;
 
 public class StarterApplication extends Application {
 
@@ -41,6 +38,7 @@ public class StarterApplication extends Application {
 //        });
         // Daje dostęp anonimowemu użytkownikowi do mojej bazy. W tabeli users jest taki dziwny ziomek          ParseUser.enableAutomaticUser();
         // Robi ACL z prawami dostępu. To dodatkowa kolumna w klasie ExampleObject
+
 //        ParseACL defaultACL = new ParseACL();
 //        defaultACL.setPublicReadAccess(true);
 //        defaultACL.setPublicWriteAccess(true);
