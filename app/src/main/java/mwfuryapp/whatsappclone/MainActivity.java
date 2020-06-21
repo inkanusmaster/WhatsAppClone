@@ -3,6 +3,7 @@ package mwfuryapp.whatsappclone;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
     Boolean loginModeActive;
     Button signupLoginButton;
     TextView toggleLoginModeTextView;
+
+    public void redirectIfLoggedIn() {
+        if (ParseUser.getCurrentUser() != null) {
+            Intent intent = new Intent(getApplicationContext(), UserListActivity.class);
+            startActivity(intent);
+        }
+    }
 
     @SuppressLint("SetTextI18n")
     public void toggleLoginMode(View view) {
@@ -49,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 public void done(ParseUser user, ParseException e) {
                     if (e == null) {
                         Toast.makeText(MainActivity.this, "User logged in!", Toast.LENGTH_SHORT).show();
+                        redirectIfLoggedIn();
                     } else {
                         Toast.makeText(MainActivity.this, "Invalid credentials!", Toast.LENGTH_SHORT).show();
                     }
@@ -77,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loginModeActive = false;
+        redirectIfLoggedIn();
 
         // pozwala niby analizować ilu userów używa aplikacji
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
