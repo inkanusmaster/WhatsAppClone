@@ -2,10 +2,14 @@ package mwfuryapp.whatsappclone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.parseproject.ChatActivity;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -36,14 +40,23 @@ public class UserListActivity extends AppCompatActivity {
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> objects, ParseException e) {
-                if (e==null){
-                    if (objects.size()>0){
-                        for (ParseUser user : objects){
+                if (e == null) {
+                    if (objects.size() > 0) {
+                        for (ParseUser user : objects) {
                             users.add(user.getUsername());
                         }
                         arrayAdapter.notifyDataSetChanged();
                     }
                 }
+            }
+        });
+
+        userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+                intent.putExtra("username", users.get(position));
+                startActivity(intent);
             }
         });
     }
