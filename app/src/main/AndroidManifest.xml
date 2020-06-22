@@ -19,7 +19,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="m">
-        <activity android:name="com.example.parseproject.ChatActivity"></activity>
+        <activity android:name=".ChatActivity"></activity>
         <activity android:name=".UserListActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
