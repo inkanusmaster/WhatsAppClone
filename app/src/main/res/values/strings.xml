@@ -4,4 +4,6 @@
     <string name="password">Password</string>
     <string name="signup_login">Signup</string>
     <string name="or_login">Or, login</string>
+    <string name="chat_write_message">Write message here</string>
+    <string name="send_button">Send</string>
 </resources>
